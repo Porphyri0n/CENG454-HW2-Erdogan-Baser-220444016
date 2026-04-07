@@ -2,14 +2,39 @@ using UnityEngine;
 
 public class MissileLauncher : MonoBehaviour
 {
+    [Header("Missile Settings")]
+    [SerializeField] private GameObject missilePrefab;
+    [SerializeField] private Transform launchPoint;
+    [SerializeField] private AudioSource launchAudioSource;
 
-    public void Launch(Transform target)
+    private GameObject activeMissile;
+
+    public GameObject Launch(Transform target)
     {
-        Debug.Log("Tehdit: Füze fýrlatýldý! Hedef: " + target.name);
+        DestroyActiveMissile();
+
+        activeMissile = Instantiate(missilePrefab, launchPoint.position, launchPoint.rotation);
+
+        MissileHoming homingScript = activeMissile.GetComponent<MissileHoming>();
+        if (homingScript != null)
+        {
+            homingScript.SetTarget(target);
+        }
+
+        if (launchAudioSource != null)
+        {
+            launchAudioSource.Play();
+        }
+
+        return activeMissile;
     }
 
     public void DestroyActiveMissile()
     {
-        Debug.Log("Tehdit atlatýldý: Aktif füze yok edildi.");
+        if (activeMissile != null)
+        {
+            Destroy(activeMissile);
+            activeMissile = null;
+        }
     }
 }
