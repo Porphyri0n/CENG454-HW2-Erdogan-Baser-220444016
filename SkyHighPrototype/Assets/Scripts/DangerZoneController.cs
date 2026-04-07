@@ -3,11 +3,9 @@ using System.Collections;
 
 public class DangerZoneController : MonoBehaviour
 {
-    [Header("Sistem Referanslarý")]
     [SerializeField] private FlightExamManager examManager;
     [SerializeField] private MissileLauncher missileLauncher;
 
-    [Header("Tehdit Ayarlarý")]
     [SerializeField] private float missileDelay = 5f;
 
     private Coroutine activeCountdown;
@@ -45,6 +43,8 @@ public class DangerZoneController : MonoBehaviour
             if (missileLauncher != null)
             {
                 missileLauncher.DestroyActiveMissile();
+                examManager.SetMissileActiveState(false);
+
             }
         }
     }

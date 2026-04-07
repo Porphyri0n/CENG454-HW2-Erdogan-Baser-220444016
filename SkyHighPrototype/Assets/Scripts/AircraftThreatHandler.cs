@@ -3,7 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class AircraftThreatHandler : MonoBehaviour
 {
-    [Header("Consequence Settings")]
     [SerializeField] private Transform respawnPoint;
     [SerializeField] private AudioSource hitAudioSource;
     [SerializeField] private FlightExamManager examManager;

@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MissileHoming
   moveSpeed: 30
-  turnSpeed: 5
+  turnSpeed: 8
 --- !u!136 &9054106811497013470
 CapsuleCollider:
   m_ObjectHideFlags: 0
